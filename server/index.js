@@ -1,29 +1,38 @@
 const express = require('express');
 const cors = require('cors');
 const { createClient } = require('@supabase/supabase-js');
+require('dotenv').config();
 
-// Configurar Supabase
-const supabaseUrl = 'https://lcutxyszjjfnltremqhb.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxjdXR4eXN6ampmbmx0cmVtcWhiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzgyMDAwNDEsImV4cCI6MjA1Mzc3NjA0MX0.ugnI0WFXgptWAFmbPtXa0PxsnnX7KxR4KsM8rrwMZdI';
-const supabase = createClient(supabaseUrl, supabaseKey);
-
-// Crear aplicación Express
 const app = express();
-app.use(cors({
-  origin: 'http://localhost:3001' // Permitir solicitudes desde el cliente
-}));
+app.use(cors());
 app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.send('El servidor está funcionando');
-});
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_KEY;
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 // Ruta para obtener todos los empleados
 app.get('/employees', async (req, res) => {
   const { data, error } = await supabase
     .from('Employees')
-    .select('*');
-  
+    .select('*, Role(name), Stores(name)');
+
+  if (error) {
+    return res.status(500).json({ error: error.message });
+  }
+
+  res.json(data);
+});
+
+// Ruta para obtener un empleado por ID
+app.get('/employees/:id', async (req, res) => {
+  const { id } = req.params;
+  const { data, error } = await supabase
+    .from('Employees')
+    .select('*, Role(name), Stores(name)')
+    .eq('id', id)
+    .single();
+
   if (error) {
     return res.status(500).json({ error: error.message });
   }
@@ -46,7 +55,35 @@ app.post('/employees', async (req, res) => {
   res.json(data);
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+// Ruta para actualizar un empleado por ID
+app.put('/employees/:id', async (req, res) => {
+  const { id } = req.params;
+  const { first_name, last_name, email, phone_number, id_role, id_store, salary, administrator_id } = req.body;
+
+  const { data, error } = await supabase
+    .from('Employees')
+    .update({ first_name, last_name, email, phone_number, id_role, id_store, salary, administrator_id: administrator_id || null })
+    .eq('id', id);
+
+  if (error) {
+    return res.status(500).json({ error: error.message });
+  }
+
+  res.json({ message: 'Empleado actualizado exitosamente', data });
+});
+
+// Ruta para eliminar un empleado por ID
+app.delete('/employees/:id', async (req, res) => {
+  const { id } = req.params;
+
+  const { data, error } = await supabase
+    .from('Employees')
+    .delete()
+    .eq('id', id);
+
+  if (error) {
+    return res.status(500).json({ error: error.message });
+  }
+
+  res.json({ message: 'Empleado eliminado exitosamente', data });
 });

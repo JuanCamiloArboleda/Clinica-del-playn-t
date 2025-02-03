@@ -105,7 +105,7 @@ export default function Example() {
         <p className="mt-6 text-tremor-default text-tremor-content dark:text-dark-tremor-content text-center">
           Forgot your join access?{" "}
           <a
-            href="#"
+            href="/Not_found"
             className="font-medium text-tremor-brand hover:text-tremor-brand-emphasis dark:text-dark-tremor-brand dark:hover:text-dark-tremor-brand-emphasis text-blue-800 underline"
           >
             Reset access

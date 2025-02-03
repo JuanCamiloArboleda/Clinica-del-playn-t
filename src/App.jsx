@@ -1,15 +1,16 @@
-import { Route, Routes, Navigate } from 'react-router-dom';
-import Home from './pages/Home';
-import Dashboard from './pages/Dashboard';
-import Employees from './pages/Employees';
-import Customers from './pages/Customers';
-import Products from './pages/Products';
-import Orders from './pages/Orders';
-import Repairs from './pages/Repairs';
-import Invoices from './pages/Invoices';
-import FinancialReports from './pages/FinancialReports';
-import Roles from './pages/Roles';
-import { useAuth } from './context/useAuth';
+import { Route, Routes, Navigate } from "react-router-dom";
+import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
+import Employees from "./pages/Employees";
+import Customers from "./pages/Customers";
+import Products from "./pages/Products";
+import Orders from "./pages/Orders";
+import Repairs from "./pages/Repairs";
+import Invoices from "./pages/Invoices";
+import FinancialReports from "./pages/FinancialReports";
+import Roles from "./pages/Roles";
+import { useAuth } from "./context/useAuth";
+import Not_found from "./pages/Not_found";
 
 function PrivateRoute({ children }) {
   const { user } = useAuth();
@@ -89,6 +90,14 @@ function App() {
         element={
           <PrivateRoute>
             <Roles />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/Not_found"
+        element={
+          <PrivateRoute>
+            <Not_found />
           </PrivateRoute>
         }
       />

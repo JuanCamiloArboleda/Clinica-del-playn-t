@@ -84,15 +84,6 @@ const Roles = () => {
                         </div>
                       </li>
                     ))}
-                  {employees.filter(
-                    (employee) =>
-                      employee.role &&
-                      employee.role.toLowerCase() === role.name.toLowerCase()
-                  ).length === 0 && (
-                    <li className="py-3 text-sm">
-                      No employees found for this role.
-                    </li>
-                  )}
                 </ul>
               </AccordionContent>
             </AccordionItem>

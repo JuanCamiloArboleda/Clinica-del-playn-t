@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { useSupabase } from '../context/useSupabase';
-import NavBar from './NavBar';
+import React, { useEffect, useState } from "react";
+import { useSupabase } from "../context/useSupabase";
+import NavBar from "../components/NavBar";
 
 const Customers = () => {
   const supabase = useSupabase();
@@ -8,9 +8,9 @@ const Customers = () => {
 
   useEffect(() => {
     const fetchCustomers = async () => {
-      const { data, error } = await supabase.from('customers').select('*');
+      const { data, error } = await supabase.from("customers").select("*");
       if (error) {
-        console.error('Error fetching customers:', error);
+        console.error("Error fetching customers:", error);
       } else {
         setCustomers(data);
       }
@@ -24,7 +24,7 @@ const Customers = () => {
       <NavBar />
       <h1>Customers</h1>
       <ul>
-        {customers.map(customer => (
+        {customers.map((customer) => (
           <li key={customer.id}>
             {customer.first_name} {customer.last_name}
           </li>

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { useSupabase } from '../context/useSupabase';
-import NavBar from './NavBar';
+import React, { useEffect, useState } from "react";
+import { useSupabase } from "../context/useSupabase";
+import NavBar from "../components/NavBar";
 
 const Repairs = () => {
   const supabase = useSupabase();
@@ -8,9 +8,9 @@ const Repairs = () => {
 
   useEffect(() => {
     const fetchRepairs = async () => {
-      const { data, error } = await supabase.from('repairs').select('*');
+      const { data, error } = await supabase.from("repairs").select("*");
       if (error) {
-        console.error('Error fetching repairs:', error);
+        console.error("Error fetching repairs:", error);
       } else {
         setRepairs(data);
       }
@@ -24,7 +24,7 @@ const Repairs = () => {
       <NavBar />
       <h1>Repairs</h1>
       <ul>
-        {repairs.map(repair => (
+        {repairs.map((repair) => (
           <li key={repair.id}>
             <h2>Repair ID: {repair.id}</h2>
             <p>Product ID: {repair.id_product}</p>

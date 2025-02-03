@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { useSupabase } from '../context/useSupabase';
-import NavBar from './NavBar';
+import React, { useEffect, useState } from "react";
+import { useSupabase } from "../context/useSupabase";
+import NavBar from "../components/NavBar";
 
 const Roles = () => {
   const supabase = useSupabase();
@@ -8,9 +8,9 @@ const Roles = () => {
 
   useEffect(() => {
     const fetchRoles = async () => {
-      const { data, error } = await supabase.from('role').select('*');
+      const { data, error } = await supabase.from("role").select("*");
       if (error) {
-        console.error('Error fetching roles:', error);
+        console.error("Error fetching roles:", error);
       } else {
         setRoles(data);
       }
@@ -24,7 +24,7 @@ const Roles = () => {
       <NavBar />
       <h1>Roles</h1>
       <ul>
-        {roles.map(role => (
+        {roles.map((role) => (
           <li key={role.id}>
             <h2>{role.name}</h2>
             <p>{role.description}</p>

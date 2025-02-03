@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { useSupabase } from '../context/useSupabase';
-import NavBar from './NavBar';
+import React, { useEffect, useState } from "react";
+import { useSupabase } from "../context/useSupabase";
+import NavBar from "../components/NavBar";
 
 const Products = () => {
   const supabase = useSupabase();
@@ -8,9 +8,9 @@ const Products = () => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const { data, error } = await supabase.from('products').select('*');
+      const { data, error } = await supabase.from("products").select("*");
       if (error) {
-        console.error('Error fetching products:', error);
+        console.error("Error fetching products:", error);
       } else {
         setProducts(data);
       }
@@ -24,7 +24,7 @@ const Products = () => {
       <NavBar />
       <h1>Products</h1>
       <ul>
-        {products.map(product => (
+        {products.map((product) => (
           <li key={product.id}>
             {product.name} - {product.description} - ${product.price}
           </li>

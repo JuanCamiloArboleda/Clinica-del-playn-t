@@ -31,6 +31,7 @@
     "@react-stately/datepicker": "^3.12.0",
     "@remixicon/react": "^4.6.0",
     "@supabase/supabase-js": "^2.22.0",
+    "@tremor/react": "^3.18.7",
     "clinica-del-playnt": "file:",
     "clsx": "^2.1.1",
     "date-fns": "^3.6.0",

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { useSupabase } from '../context/useSupabase';
-import NavBar from './NavBar';
+import React, { useEffect, useState } from "react";
+import { useSupabase } from "../context/useSupabase";
+import NavBar from "../components/NavBar";
 
 const Invoices = () => {
   const supabase = useSupabase();
@@ -8,9 +8,9 @@ const Invoices = () => {
 
   useEffect(() => {
     const fetchInvoices = async () => {
-      const { data, error } = await supabase.from('invoices').select('*');
+      const { data, error } = await supabase.from("invoices").select("*");
       if (error) {
-        console.error('Error fetching invoices:', error);
+        console.error("Error fetching invoices:", error);
       } else {
         setInvoices(data);
       }
@@ -24,7 +24,7 @@ const Invoices = () => {
       <NavBar />
       <h1>Invoices</h1>
       <ul>
-        {invoices.map(invoice => (
+        {invoices.map((invoice) => (
           <li key={invoice.id}>
             <h2>Invoice ID: {invoice.id}</h2>
             <p>Order ID: {invoice.id_order}</p>

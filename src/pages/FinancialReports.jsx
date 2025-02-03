@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { useSupabase } from '../context/useSupabase';
-import NavBar from './NavBar';
+import React, { useEffect, useState } from "react";
+import { useSupabase } from "../context/useSupabase";
+import NavBar from "../components/NavBar";
 
 const FinancialReports = () => {
   const supabase = useSupabase();
@@ -8,9 +8,11 @@ const FinancialReports = () => {
 
   useEffect(() => {
     const fetchReports = async () => {
-      const { data, error } = await supabase.from('financialreports').select('*');
+      const { data, error } = await supabase
+        .from("financialreports")
+        .select("*");
       if (error) {
-        console.error('Error fetching financial reports:', error);
+        console.error("Error fetching financial reports:", error);
       } else {
         setReports(data);
       }
@@ -24,7 +26,7 @@ const FinancialReports = () => {
       <NavBar />
       <h1>Financial Reports</h1>
       <ul>
-        {reports.map(report => (
+        {reports.map((report) => (
           <li key={report.id}>
             <h2>Store ID: {report.id_store}</h2>
             <p>Month: {report.month}</p>

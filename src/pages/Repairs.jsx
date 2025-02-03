@@ -1,6 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useSupabase } from "../context/useSupabase";
 import NavBar from "../components/NavBar";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeaderCell,
+  TableRoot,
+  TableRow,
+} from "@/components/Table";
 
 const Repairs = () => {
   const supabase = useSupabase();
@@ -22,21 +31,47 @@ const Repairs = () => {
   return (
     <div>
       <NavBar />
-      <h1>Repairs</h1>
-      <ul>
-        {repairs.map((repair) => (
-          <li key={repair.id}>
-            <h2>Repair ID: {repair.id}</h2>
-            <p>Product ID: {repair.id_product}</p>
-            <p>Order ID: {repair.id_order}</p>
-            <p>Status: {repair.repair_status}</p>
-            <p>Description: {repair.description}</p>
-            <p>Warranty Status: {repair.warranty_status}</p>
-            <p>Repair Cost: ${repair.repairment_cost}</p>
-            <p>Repair Date: {repair.repair_date}</p>
-          </li>
-        ))}
-      </ul>
+      <div className="p-4">
+        <h1 className="mb-4 text-2xl font-bold">Repairs</h1>
+        <TableRoot>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableHeaderCell>Repair ID</TableHeaderCell>
+                <TableHeaderCell>Product ID</TableHeaderCell>
+                <TableHeaderCell>Order ID</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
+                <TableHeaderCell>Description</TableHeaderCell>
+                <TableHeaderCell>Warranty Status</TableHeaderCell>
+                <TableHeaderCell className="text-right">
+                  Repair Cost
+                </TableHeaderCell>
+                <TableHeaderCell className="text-right">
+                  Repair Date
+                </TableHeaderCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {repairs.map((repair) => (
+                <TableRow key={repair.id}>
+                  <TableCell>{repair.id}</TableCell>
+                  <TableCell>{repair.id_product}</TableCell>
+                  <TableCell>{repair.id_order}</TableCell>
+                  <TableCell>{repair.repair_status}</TableCell>
+                  <TableCell>{repair.description}</TableCell>
+                  <TableCell>{repair.warranty_status}</TableCell>
+                  <TableCell className="text-right">
+                    ${repair.repairment_cost}
+                  </TableCell>
+                  <TableCell className="text-right">
+                    {repair.repair_date}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableRoot>
+      </div>
     </div>
   );
 };

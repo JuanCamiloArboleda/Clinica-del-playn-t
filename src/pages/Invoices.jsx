@@ -1,6 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useSupabase } from "../context/useSupabase";
 import NavBar from "../components/NavBar";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeaderCell,
+  TableRoot,
+  TableRow,
+} from "@/components/Table";
 
 const Invoices = () => {
   const supabase = useSupabase();
@@ -22,19 +31,37 @@ const Invoices = () => {
   return (
     <div>
       <NavBar />
-      <h1>Invoices</h1>
-      <ul>
-        {invoices.map((invoice) => (
-          <li key={invoice.id}>
-            <h2>Invoice ID: {invoice.id}</h2>
-            <p>Order ID: {invoice.id_order}</p>
-            <p>Invoice Date: {invoice.invoice_date}</p>
-            <p>Amount: ${invoice.amount}</p>
-            <p>Payment Status: {invoice.payment_status}</p>
-            <p>Customer ID: {invoice.id_customer}</p>
-          </li>
-        ))}
-      </ul>
+      <div className="p-4">
+        <h1 className="mb-4 text-2xl font-bold">Invoices</h1>
+        <TableRoot>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableHeaderCell>Invoice ID</TableHeaderCell>
+                <TableHeaderCell>Order ID</TableHeaderCell>
+                <TableHeaderCell>Invoice Date</TableHeaderCell>
+                <TableHeaderCell className="text-right">Amount</TableHeaderCell>
+                <TableHeaderCell>Payment Status</TableHeaderCell>
+                <TableHeaderCell>Customer ID</TableHeaderCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {invoices.map((invoice) => (
+                <TableRow key={invoice.id}>
+                  <TableCell>{invoice.id}</TableCell>
+                  <TableCell>{invoice.id_order}</TableCell>
+                  <TableCell>{invoice.invoice_date}</TableCell>
+                  <TableCell className="text-right">
+                    ${invoice.amount}
+                  </TableCell>
+                  <TableCell>{invoice.payment_status}</TableCell>
+                  <TableCell>{invoice.id_customer}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableRoot>
+      </div>
     </div>
   );
 };

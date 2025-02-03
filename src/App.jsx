@@ -1,14 +1,14 @@
 import { Route, Routes, Navigate } from 'react-router-dom';
-import Home from './components/Home';
-import Dashboard from './components/Dashboard';
-import Employees from './components/Employees';
-import Customers from './components/Customers';
-import Products from './components/Products';
-import Orders from './components/Orders';
-import Repairs from './components/Repairs';
-import Invoices from './components/Invoices';
-import FinancialReports from './components/FinancialReports';
-import Roles from './components/Roles';
+import Home from './pages/Home';
+import Dashboard from './pages/Dashboard';
+import Employees from './pages/Employees';
+import Customers from './pages/Customers';
+import Products from './pages/Products';
+import Orders from './pages/Orders';
+import Repairs from './pages/Repairs';
+import Invoices from './pages/Invoices';
+import FinancialReports from './pages/FinancialReports';
+import Roles from './pages/Roles';
 import { useAuth } from './context/useAuth';
 
 function PrivateRoute({ children }) {

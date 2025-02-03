@@ -34,7 +34,9 @@ const Products = () => {
     <div className="min-h-screen">
       <NavBar />
       <div className="p-4">
-        <h1 className="mb-4 text-2xl font-bold">Lista de Productos</h1>
+        <h1 className="mb-4 text-2xl font-bold dark:text-green-400">
+          Lista de Productos
+        </h1>
         <TableRoot>
           <Table>
             <TableCaption></TableCaption>

@@ -2,7 +2,8 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/useAuth";
 import NavBar from "../components/NavBar";
-
+import { Divider } from "@/components/Divider";
+export const DividerHero = () => <Divider />;
 const Dashboard = () => {
   const { user, permissions, signOut } = useAuth();
   const navigate = useNavigate();

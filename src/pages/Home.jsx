@@ -40,7 +40,7 @@ export default function Example() {
   };
 
   return (
-    <div className="flex min-h-screen flex-1 flex-col justify-center px-4 py-10 lg:px-6">
+    <div className="flex min-h-screen flex-1 flex-col justify-center px-4 py-10 lg:px-6 text-green-400">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <h3 className="text-center text-tremor-title font-semibold text-tremor-content-strong dark:text-dark-tremor-content-strong">
           Clinica del Playn't
@@ -73,7 +73,7 @@ export default function Example() {
               htmlFor="join_access"
               className="text-tremor-default font-medium text-tremor-content-strong dark:text-dark-tremor-content-strong"
             >
-              Join Access
+              Access Code
             </label>
             <TextInput
               type="password"
@@ -90,7 +90,13 @@ export default function Example() {
           )}
           <button
             type="submit"
-            className="mt-4 w-full whitespace-nowrap rounded-tremor-default bg-tremor-brand py-2 text-center text-tremor-default font-medium text-tremor-brand-inverted shadow-tremor-input hover:bg-tremor-brand-emphasis dark:bg-dark-tremor-brand dark:text-dark-tremor-brand-inverted dark:shadow-dark-tremor-input dark:hover:bg-dark-tremor-brand-emphasis"
+            className="mt-4 w-full py-3 px-4 rounded-lg bg-tremor-brand hover:bg-tremor-brand-emphasis 
+           text-tremor-brand-inverted font-medium text-sm 
+           transition-colors duration-200 
+           shadow-sm hover:shadow-md 
+           focus:outline-2 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 
+           dark:bg-dark-tremor-brand dark:hover:bg-dark-tremor-brand-emphasis 
+           dark:text-dark-tremor-brand-inverted dark:focus:ring-offset-tremor-dark bg-slate-900"
           >
             Sign In
           </button>
@@ -100,7 +106,7 @@ export default function Example() {
           Forgot your join access?{" "}
           <a
             href="#"
-            className="font-medium text-tremor-brand hover:text-tremor-brand-emphasis dark:text-dark-tremor-brand dark:hover:text-dark-tremor-brand-emphasis"
+            className="font-medium text-tremor-brand hover:text-tremor-brand-emphasis dark:text-dark-tremor-brand dark:hover:text-dark-tremor-brand-emphasis text-blue-800 underline"
           >
             Reset access
           </a>

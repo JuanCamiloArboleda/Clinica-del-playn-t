@@ -63,7 +63,7 @@ const Orders = () => {
     <div>
       <NavBar />
       <div className="p-4">
-        <h1 className="mb-4 text-2xl font-bold">Orders</h1>
+        <h1 className="mb-4 text-2xl font-bold dark:text-green-400">Orders</h1>
         <TableRoot>
           <Table>
             <TableHead>

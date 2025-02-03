@@ -32,7 +32,7 @@ const Repairs = () => {
     <div>
       <NavBar />
       <div className="p-4">
-        <h1 className="mb-4 text-2xl font-bold">Repairs</h1>
+        <h1 className="mb-4 text-2xl font-bold dark:text-green-400">Repairs</h1>
         <TableRoot>
           <Table>
             <TableHead>

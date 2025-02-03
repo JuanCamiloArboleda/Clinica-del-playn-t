@@ -27,18 +27,29 @@ const Employees = () => {
     <div>
       <NavBar />
       <div className="p-4">
-        <h1 className="mb-4 text-2xl font-bold">Employees</h1>
+        <h1 className="mb-4 text-2xl font-bold dark:text-green-400">
+          Employees
+        </h1>
         <ul role="list" className="divide-y divide-gray-100">
           {employees.map((employee) => (
             <li key={employee.id} className="flex justify-between gap-x-6 py-5">
               <div className="flex min-w-0 gap-x-4">
-                <img
-                  alt=""
-                  src={employee.image_url || "https://via.placeholder.com/48"}
-                  className="h-12 w-12 flex-none rounded-full bg-gray-50"
-                />
+                <div class="relative w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
+                  <svg
+                    class="absolute w-12 h-12 text-gray-400 -left-1"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </div>
                 <div className="min-w-0 flex-auto">
-                  <p className="text-sm font-semibold text-gray-900">
+                  <p className="text-sm font-semibold text-zinc-100">
                     {employee.first_name} {employee.last_name}
                   </p>
                   <p className="mt-1 truncate text-xs text-gray-500">

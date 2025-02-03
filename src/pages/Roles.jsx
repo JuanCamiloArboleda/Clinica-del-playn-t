@@ -45,20 +45,14 @@ const Roles = () => {
     <div>
       <NavBar />
       <div className="p-4 text-slate-950">
-        <h1 className="mb-4 text-2xl font-bold">Roles</h1>
+        <h1 className="mb-4 text-2xl font-bold dark:text-green-400">Roles</h1>
         <Accordion type="single" className="mx-auto mt-3 max-w-2xl" collapsible>
           {roles.map((role) => (
-            <AccordionItem
-              className="text-slate-950"
-              key={role.id}
-              value={`role-${role.id}`}
-            >
+            <AccordionItem key={role.id} value={`role-${role.id}`}>
               <AccordionTrigger>{role.name}</AccordionTrigger>
               <AccordionContent>
-                <p className="mb-2 text-sm text-slate-950">
-                  {role.description}
-                </p>
-                <ul role="list" className="divide-y divide-gray-950">
+                <p className="mb-2 text-sm">{role.description}</p>
+                <ul role="list" className="divide-y">
                   {employees
                     .filter(
                       (employee) =>
@@ -80,10 +74,10 @@ const Roles = () => {
                             className="h-12 w-12 flex-none rounded-full bg-gray-50"
                           />
                           <div className="min-w-0 flex-auto">
-                            <p className="text-sm font-semibold text-gray-900">
+                            <p className="text-sm font-semibold">
                               {employee.first_name} {employee.last_name}
                             </p>
-                            <p className="mt-1 truncate text-xs text-gray-500">
+                            <p className="mt-1 truncate text-x">
                               {employee.email}
                             </p>
                           </div>
@@ -95,7 +89,7 @@ const Roles = () => {
                       employee.role &&
                       employee.role.toLowerCase() === role.name.toLowerCase()
                   ).length === 0 && (
-                    <li className="py-3 text-sm text-gray-500">
+                    <li className="py-3 text-sm">
                       No employees found for this role.
                     </li>
                   )}

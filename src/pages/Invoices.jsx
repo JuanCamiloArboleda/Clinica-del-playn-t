@@ -32,7 +32,9 @@ const Invoices = () => {
     <div>
       <NavBar />
       <div className="p-4">
-        <h1 className="mb-4 text-2xl font-bold">Invoices</h1>
+        <h1 className="mb-4 text-2xl font-bold dark:text-green-400">
+          Invoices
+        </h1>
         <TableRoot>
           <Table>
             <TableHead>

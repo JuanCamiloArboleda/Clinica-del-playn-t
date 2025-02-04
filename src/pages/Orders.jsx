@@ -15,6 +15,7 @@ import {
 const Orders = () => {
   const supabase = useSupabase();
   const [orders, setOrders] = useState([]);
+<<<<<<< HEAD
   const [products, setProducts] = useState([]);
   const [stores, setStores] = useState([]);
   const [orderProducts, setOrderProducts] = useState([]);
@@ -35,6 +36,10 @@ const Orders = () => {
   const [orderDetails, setOrderDetails] = useState([]);
   const [showAddOrder, setShowAddOrder] = useState(false);
   const [showAddOrderProduct, setShowAddOrderProduct] = useState(false);
+=======
+  const [editingOrderId, setEditingOrderId] = useState(null);
+  const [newStatus, setNewStatus] = useState("");
+>>>>>>> 54ff285a82f3b75f15404a3b5e71ecebb71f0687
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -46,6 +51,7 @@ const Orders = () => {
       }
     };
 
+<<<<<<< HEAD
     const fetchProducts = async () => {
       const { data, error } = await supabase.from("products").select("*");
       if (error) {
@@ -77,6 +83,9 @@ const Orders = () => {
     fetchProducts();
     fetchStores();
     fetchOrderProducts();
+=======
+    fetchOrders();
+>>>>>>> 54ff285a82f3b75f15404a3b5e71ecebb71f0687
   }, [supabase]);
 
   const handleEditClick = (orderId, currentStatus) => {
@@ -107,6 +116,7 @@ const Orders = () => {
     }
   };
 
+<<<<<<< HEAD
   const handleAddOrder = async (e) => {
     e.preventDefault();
     const { data, error } = await supabase
@@ -213,11 +223,17 @@ const Orders = () => {
     return orderDetails.reduce((total, item) => total + item.quantity * item.price_at_purchase, 0);
   };
 
+=======
+>>>>>>> 54ff285a82f3b75f15404a3b5e71ecebb71f0687
   return (
     <div>
       <NavBar />
       <div className="p-4">
+<<<<<<< HEAD
         <h1 className="mb-4 text-2xl font-bold text-white">Orders</h1>
+=======
+        <h1 className="mb-4 text-2xl font-bold">Orders</h1>
+>>>>>>> 54ff285a82f3b75f15404a3b5e71ecebb71f0687
         <TableRoot>
           <Table>
             <TableHead>
@@ -225,7 +241,10 @@ const Orders = () => {
                 <TableHeaderCell>Order ID</TableHeaderCell>
                 <TableHeaderCell>Order Date</TableHeaderCell>
                 <TableHeaderCell>Status</TableHeaderCell>
+<<<<<<< HEAD
                 <TableHeaderCell>Store</TableHeaderCell>
+=======
+>>>>>>> 54ff285a82f3b75f15404a3b5e71ecebb71f0687
                 <TableHeaderCell>Action</TableHeaderCell>
               </TableRow>
             </TableHead>
@@ -252,7 +271,10 @@ const Orders = () => {
                       </Badge>
                     )}
                   </TableCell>
+<<<<<<< HEAD
                   <TableCell>{order.store_id}</TableCell>
+=======
+>>>>>>> 54ff285a82f3b75f15404a3b5e71ecebb71f0687
                   <TableCell>
                     {editingOrderId === order.id ? (
                       <button
@@ -262,6 +284,7 @@ const Orders = () => {
                         Save
                       </button>
                     ) : (
+<<<<<<< HEAD
                       <div className="flex space-x-2">
                         <button
                           onClick={() => handleEditClick(order.id, order.status)}
@@ -276,6 +299,14 @@ const Orders = () => {
                           Details
                         </button>
                       </div>
+=======
+                      <button
+                        onClick={() => handleEditClick(order.id, order.status)}
+                        className="px-3 py-1 bg-gray-500 text-white rounded"
+                      >
+                        Edit
+                      </button>
+>>>>>>> 54ff285a82f3b75f15404a3b5e71ecebb71f0687
                     )}
                   </TableCell>
                 </TableRow>
@@ -283,6 +314,7 @@ const Orders = () => {
             </TableBody>
           </Table>
         </TableRoot>
+<<<<<<< HEAD
 
         {/* Formulario para agregar nuevas órdenes */}
         <div className="mt-8 max-w-lg mx-auto p-4 border rounded shadow dark:border-gray-700">
@@ -458,9 +490,15 @@ const Orders = () => {
             </div>
           </div>
         )}
+=======
+>>>>>>> 54ff285a82f3b75f15404a3b5e71ecebb71f0687
       </div>
     </div>
   );
 };
 
+<<<<<<< HEAD
 export default Orders;
+=======
+export default Orders;
+>>>>>>> 54ff285a82f3b75f15404a3b5e71ecebb71f0687

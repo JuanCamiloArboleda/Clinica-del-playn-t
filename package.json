@@ -10,8 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@headlessui/react": "^2.2.0",
     "@heroicons/react": "^2.2.0",
+=======
+>>>>>>> 54ff285a82f3b75f15404a3b5e71ecebb71f0687
     "@internationalized/date": "^3.7.0",
     "@radix-ui/react-accordion": "^1.2.2",
     "@radix-ui/react-checkbox": "^1.1.3",

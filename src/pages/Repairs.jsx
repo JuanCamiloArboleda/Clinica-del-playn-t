@@ -14,6 +14,7 @@ import {
 const Repairs = () => {
   const supabase = useSupabase();
   const [repairs, setRepairs] = useState([]);
+<<<<<<< HEAD
   const [stores, setStores] = useState([]);
   const [newRepair, setNewRepair] = useState({
     id_product: "",
@@ -27,6 +28,8 @@ const Repairs = () => {
   });
   const [editingRepairId, setEditingRepairId] = useState(null);
   const [newStatus, setNewStatus] = useState("");
+=======
+>>>>>>> 54ff285a82f3b75f15404a3b5e71ecebb71f0687
 
   useEffect(() => {
     const fetchRepairs = async () => {
@@ -38,6 +41,7 @@ const Repairs = () => {
       }
     };
 
+<<<<<<< HEAD
     const fetchStores = async () => {
       const { data, error } = await supabase.from("stores").select("*");
       if (error) {
@@ -102,6 +106,11 @@ const Repairs = () => {
     setNewRepair({ ...newRepair, [name]: value });
   };
 
+=======
+    fetchRepairs();
+  }, [supabase]);
+
+>>>>>>> 54ff285a82f3b75f15404a3b5e71ecebb71f0687
   return (
     <div>
       <NavBar />
@@ -117,10 +126,19 @@ const Repairs = () => {
                 <TableHeaderCell>Status</TableHeaderCell>
                 <TableHeaderCell>Description</TableHeaderCell>
                 <TableHeaderCell>Warranty Status</TableHeaderCell>
+<<<<<<< HEAD
                 <TableHeaderCell className="text-right">Repair Cost</TableHeaderCell>
                 <TableHeaderCell className="text-right">Repair Date</TableHeaderCell>
                 <TableHeaderCell>Store</TableHeaderCell>
                 <TableHeaderCell>Actions</TableHeaderCell>
+=======
+                <TableHeaderCell className="text-right">
+                  Repair Cost
+                </TableHeaderCell>
+                <TableHeaderCell className="text-right">
+                  Repair Date
+                </TableHeaderCell>
+>>>>>>> 54ff285a82f3b75f15404a3b5e71ecebb71f0687
               </TableRow>
             </TableHead>
             <TableBody>
@@ -129,6 +147,7 @@ const Repairs = () => {
                   <TableCell>{repair.id}</TableCell>
                   <TableCell>{repair.id_product}</TableCell>
                   <TableCell>{repair.id_order}</TableCell>
+<<<<<<< HEAD
                   <TableCell>
                     {editingRepairId === repair.id ? (
                       <input
@@ -165,12 +184,23 @@ const Repairs = () => {
                         Edit
                       </button>
                     )}
+=======
+                  <TableCell>{repair.repair_status}</TableCell>
+                  <TableCell>{repair.description}</TableCell>
+                  <TableCell>{repair.warranty_status}</TableCell>
+                  <TableCell className="text-right">
+                    ${repair.repairment_cost}
+                  </TableCell>
+                  <TableCell className="text-right">
+                    {repair.repair_date}
+>>>>>>> 54ff285a82f3b75f15404a3b5e71ecebb71f0687
                   </TableCell>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
         </TableRoot>
+<<<<<<< HEAD
 
         {/* Formulario para agregar nuevas reparaciones */}
         <div className="mt-8 max-w-lg mx-auto p-4 border rounded shadow dark:border-gray-700">
@@ -278,9 +308,15 @@ const Repairs = () => {
             </button>
           </form>
         </div>
+=======
+>>>>>>> 54ff285a82f3b75f15404a3b5e71ecebb71f0687
       </div>
     </div>
   );
 };
 
+<<<<<<< HEAD
 export default Repairs;
+=======
+export default Repairs;
+>>>>>>> 54ff285a82f3b75f15404a3b5e71ecebb71f0687
